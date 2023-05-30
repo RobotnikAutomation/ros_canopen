@@ -207,7 +207,8 @@ public:
         std::pair<boost::unordered_map<Key, EntryConstSharedPtr>::iterator, bool>  res = dict_.insert(std::make_pair(is_sub?Key(e->index,e->sub_index):Key(e->index),e));
         return res.second;
     }
-    bool iterate(boost::unordered_map<Key, EntryConstSharedPtr>::const_iterator &it) const;
+    typedef boost::unordered_map<Key, EntryConstSharedPtr, KeyHash>  ObjectDictMap;
+    bool iterate(ObjectDictMap::const_iterator &it) const;
     typedef std::list<std::pair<std::string, std::string> > Overlay;
     typedef boost::shared_ptr<ObjectDict> ObjectDictSharedPtr;
     static ObjectDictSharedPtr fromFile(const std::string &path, const Overlay &overlay = Overlay());
